@@ -1,14 +1,16 @@
 import React, { useRef, useState } from 'react'
 import Header from './Header'
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { checkValidData } from '../utils/validate';
 import { auth } from '../utils/firebase';
+import { useNavigate } from "react-router-dom"
 const Login = () => {
   const [isSignInForm, setSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState();
   const email = useRef(null);
   const password = useRef(null);
   const name = useRef(null);
+  const navigate = useNavigate()
   const toggleSignInForm = () => {
     setSignInForm(!isSignInForm);
   }
@@ -23,13 +25,21 @@ const Login = () => {
     if (!isSignInForm) {
       //Sign up Logic
       createUserWithEmailAndPassword(
-        auth, 
-        email.current.value, 
+        auth,
+        email.current.value,
         password.current.value
       )
         .then((userCredential) => {
           // Signed up 
           const user = userCredential.user;
+          updateProfile(user , {
+            displayName: name.current.value, photoURL: "https://avatars.githubusercontent.com/u/67815775?v=4"
+          }).then(() => {
+            navigate("/browse");
+          }).catch((error) => {
+            setErrorMessage(error.message)
+          });
+
           // ...
           console.log(user);
         })
@@ -44,8 +54,8 @@ const Login = () => {
     else {
       //Sign in Logic
       signInWithEmailAndPassword(
-        auth, 
-        email.current.value, 
+        auth,
+        email.current.value,
         password.current.value
       )
         .then((userCredential) => {
@@ -53,12 +63,15 @@ const Login = () => {
           const user = userCredential.user;
           console.log(user);
           console.log("Success Login")
+          navigate("/Browse")
           // ...
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
           setErrorMessage(errorMessage + errorCode)
+          navigate("/");
+
         });
 
     }
