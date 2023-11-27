@@ -1,5 +1,6 @@
 # Netflix GPT
 
+
 - Create React App
 - Configured TailwindCSS
 - Header
@@ -16,6 +17,11 @@
 - Implemented Sign out
 - Update Profile
 - Fetch from TMDB Movies
+
+- 
+# How will the Browse Page look like
+![photo_2023-11-27_22-44-43](https://github.com/harshchandwani/netflixy-gpt/assets/67815775/65f53bb1-3de6-4da6-a11a-e2fec24b8444)
+
 
 # Features
 
