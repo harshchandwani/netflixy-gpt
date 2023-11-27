@@ -4,6 +4,8 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfi
 import { checkValidData } from '../utils/validate';
 import { auth } from '../utils/firebase';
 import { useNavigate } from "react-router-dom"
+import { useDispatch } from 'react-redux';
+import { addUser } from '../utils/userSlice';
 const Login = () => {
   const [isSignInForm, setSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState();
@@ -11,6 +13,7 @@ const Login = () => {
   const password = useRef(null);
   const name = useRef(null);
   const navigate = useNavigate()
+  const dispatch = useDispatch()
   const toggleSignInForm = () => {
     setSignInForm(!isSignInForm);
   }
@@ -35,12 +38,13 @@ const Login = () => {
           updateProfile(user , {
             displayName: name.current.value, photoURL: "https://avatars.githubusercontent.com/u/67815775?v=4"
           }).then(() => {
+            const { uid, email, displayName, photoURL } = auth.current.user; //was user before
+            //if we use user just like previously, in commit 3386f8c, that will not solve the error as the user will be extracted from the above, we need to use the user which is updated already
+            dispatch(addUser({uid: uid, email: email, displayName: displayName, photoURL: photoURL}));
             navigate("/browse");
           }).catch((error) => {
             setErrorMessage(error.message)
           });
-
-          // ...
           console.log(user);
         })
         .catch((error) => {
