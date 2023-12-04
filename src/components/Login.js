@@ -3,16 +3,16 @@ import Header from './Header'
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { checkValidData } from '../utils/validate';
 import { auth } from '../utils/firebase';
-import { useNavigate } from "react-router-dom"
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
+import backgroundImage from "../images/backgroundImage.jpg"
+import  UserProfileIcon  from '../images/userProfileIcon.jpg';
 const Login = () => {
   const [isSignInForm, setSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState();
   const email = useRef(null);
   const password = useRef(null);
   const name = useRef(null);
-  const navigate = useNavigate()
   const dispatch = useDispatch()
   const toggleSignInForm = () => {
     setSignInForm(!isSignInForm);
@@ -36,16 +36,16 @@ const Login = () => {
           // Signed up 
           const user = userCredential.user;
           updateProfile(user , {
-            displayName: name.current.value, photoURL: "https://avatars.githubusercontent.com/u/67815775?v=4"
+            displayName: name.current.value, photoURL: UserProfileIcon
           }).then(() => {
             const { uid, email, displayName, photoURL } = auth.current.user; //was user before
             //if we use user just like previously, in commit 3386f8c, that will not solve the error as the user will be extracted from the above, we need to use the user which is updated already
             dispatch(addUser({uid: uid, email: email, displayName: displayName, photoURL: photoURL}));
-            navigate("/browse");
+            
           }).catch((error) => {
             setErrorMessage(error.message)
           });
-          console.log(user);
+          
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -66,33 +66,32 @@ const Login = () => {
           // Signed in 
           const user = userCredential.user;
           console.log(user);
-          console.log("Success Login")
-          navigate("/Browse")
           // ...
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
           setErrorMessage(errorMessage + errorCode)
-          navigate("/");
+          
 
         });
 
     }
   }
   return (
-    <div>
+    <div className=''>
       <Header />
       <div className='absolute'>
         <img
-          src='https://user-images.githubusercontent.com/33485020/108069438-5ee79d80-7089-11eb-8264-08fdda7e0d11.jpg'
-          alt='Netflix background image'
+          src={backgroundImage}
+          alt='Netflix bg'
         />
       </div>
 
       <form onSubmit={(e) => e.preventDefault()} className='rounded w-3/12 text-white absolute p-12 my-36 mx-auto right-0 left-0 bg-black bg-opacity-80'>
         <h1 className='font-bold text-3xl py-4'>{isSignInForm ? "Sign In" : "Sign up"}</h1>
-        {!isSignInForm && <input
+        {!isSignInForm && 
+        <input
           ref={name}
           type='text'
           placeholder='Full Name'
@@ -115,7 +114,7 @@ const Login = () => {
         />
         <p className='text-red-600 font-bold text-lg py-2'>{errorMessage}</p>
         <button className='p-4 my-6 w-full bg-red-700 rounded hover:bg-red-800' onClick={handleButtonClick}>{isSignInForm ? "Sign In" : "Sign up"}</button>
-        <p>{isSignInForm ? "New to Netflix?" : "Already a User?"} <a href="#" onClick={toggleSignInForm}>{isSignInForm ? "Sign up" : "Sign in"}</a></p>
+        <p>{isSignInForm ? "New to Netflix?" : "Already a User?"} <a href='/#' onClick={toggleSignInForm}>{isSignInForm ? "Sign up" : "Sign in"}</a></p>
       </form>
     </div>
   )
