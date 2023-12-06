@@ -23,6 +23,10 @@
 - Register TMBD API and create an application and get access token
 - Get Data from TMDB now playing movies list API
 - Fetch from TMDB Movies
+- Update Store with Trailer and Video Data
+- Embedded the Youtube Video and make it autoplay and mute
+- Tailwind Classes to make the main container look awesome
+
 
 - 
 # How will the Browse Page look like
