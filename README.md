@@ -32,6 +32,10 @@
 - TMDB Image CDN URL
 - Made the Browser page using Tailwind CSS
 - use 4 custom hook
+- GPT Search Page
+- GPT seach bar
+- (Feature)Multi Language Feature
+- Integrate GET APIs
 
 - 
 # How will the Browse Page look like
@@ -53,3 +57,8 @@
 - NetflixGPT
   - Search Bar
   - Movie Suggestions
+
+
+# Features to be Added soon
+- Added Lang support to all pages (Done with GPT Search page)
+- Add buttons to move right and left on movie list
