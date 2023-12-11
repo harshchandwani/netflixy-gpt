@@ -15,6 +15,5 @@ export const SUPPORTED_LANGUAGES = [
 ];
 
 
-export const OPENAI_KEY = "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";
+export const OPENAI_KEY = "add API key here";
 
-//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
