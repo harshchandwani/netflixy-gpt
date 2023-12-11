@@ -62,3 +62,5 @@
 # Features to be Added soon
 - Added Lang support to all pages (Done with GPT Search page)
 - Add buttons to move right and left on movie list
+- Add Alert if GPT is not working in Search GPT bar
+- 
