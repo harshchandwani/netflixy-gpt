@@ -22,7 +22,7 @@ const GptSearchBar = () => {
     // console.log(searchText.current.value)
     //Make a call to GPT API
     //Store 
-    const gptQuery = "Act as a Movie recommendation system and suggest some movies for the query: " + searchText.current.value + ". Only give me names  of 5 movies, comma separated like the example result given ahead. Example Result: Gadar, Sholay, Don, Koi mil gya"
+    const gptQuery = "Act as a Bollywood Movie recommendation system and suggest some movies for the query: " + searchText.current.value + ". Only give me names  of 5 movies, comma separated like the example result given ahead. Example Result: Gadar, Sholay, Don, Koi mil gya"
 
 
     
@@ -54,16 +54,16 @@ const GptSearchBar = () => {
     
   }
   return (
-    <div className='pt-[10%] flex justify-center'>
-      <form className=' w-1/2 bg-black grid grid-cols-12' onSubmit={(e) => e.preventDefault()}>
+    <div className='pt-[35%] md:pt-[10%] flex justify-center'>
+      <form className=' w-full md:w-1/2 bg-black grid grid-cols-12' onSubmit={(e) => e.preventDefault()}>
         <input 
             ref={searchText}
             type='text' 
-            className='p-4 m-4 col-span-10' 
+            className='p-4 m-4 col-span-9' 
             placeholder= {searchPlaceholder}
         />
         <button 
-            className='m-4 py-2 px-4 bg-red-700 text-white rounded-lg col-span-2'
+            className='col-span-3 m-4 py-2 px-4 bg-red-700 text-white rounded-lg'
             onClick={handleGptSearchClick}
             >
             {buttonText}

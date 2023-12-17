@@ -75,7 +75,7 @@ const handleLanguageChange = (e) => {
         alt='Netflix Logo'
       />
 
-      {user && (<div className='flex p-2'>
+      {user && (<div className='flex p-2 justify-between'>
         {showGptSearch && (
           <select 
             className='py-2 px-4 mx-4 my-4 bg-gray-900 text-white rounded-md'
@@ -90,7 +90,7 @@ const handleLanguageChange = (e) => {
             {(showGptSearch? "Home Page": "GPT Search")}
         </button>
         <img
-          className='w-12 h-12 my-4'
+          className='hidden md:block w-12 h-12'
           alt='usericon'
           src={user?.photoURL}
         />

@@ -83,13 +83,7 @@ const Login = () => {
       <Header />
       <div className='absolute'>
         <img
-          className="h-screen object-cover"
-          style={{backgroundSize: 'cover',
-          backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'center',
-          width: '100%',
-          height: '300px', 
-        }}
+          className="w-screen h-screen object-cover"
           src={backgroundImage}
           alt='Netflix bg'
         />
@@ -97,7 +91,7 @@ const Login = () => {
 
       <form 
         onSubmit={(e) => e.preventDefault()} 
-        className='rounded w-3/12 text-white absolute p-12 my-36 mx-auto right-0 left-0 bg-black bg-opacity-80'
+        className='w-full md:w-3/12 absolute p-12 bg-black my-36 mx-auto right-0 left-0 text-white rounded-lg bg-opacity-80'
       >
         <h1 className='font-bold text-3xl py-4'>{isSignInForm ? "Sign In" : "Sign up"}</h1>
         {!isSignInForm && 
@@ -105,22 +99,22 @@ const Login = () => {
           ref={name}
           type='text'
           placeholder='Full Name'
-          className='p-4 my-4 w-full'
-          style={{ backgroundColor: '#333333' }}
+          className='p-4 my-4 w-full bg-gray-700'
+          
         />}
         <input
           ref={email}
           type='text'
           placeholder='Email or phone number'
-          className='p-4 my-4 w-full'
-          style={{ backgroundColor: '#333333' }}
+          className='p-4 my-4 w-full bg-gray-700'
+          // style={{ backgroundColor: '#333333' }}
         />
         <input
           ref={password}
           type='password'
           placeholder='Password'
-          className='p-4 my-4 w-full'
-          style={{ backgroundColor: '#333333' }}
+          className='p-4 my-4 w-full bg-gray-700'
+          // style={{ backgroundColor: '#333333' }}
         />
         <p className='text-red-600 font-bold text-lg py-2'>{errorMessage}</p>
         <button className='p-4 my-6 w-full bg-red-700 rounded hover:bg-red-800' onClick={handleButtonClick}>{isSignInForm ? "Sign In" : "Sign up"}</button>
