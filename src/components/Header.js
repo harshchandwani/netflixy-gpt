@@ -11,7 +11,7 @@ import { changeLanguage } from "../utils/configSlice"
 const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const user = useSelector(store => store.user);
+  const user = useSelector((store) => store.user);
   const showGptSearch = useSelector(store => store.gpt.showGptSearch);
   const handleSignOut = () => {
 
@@ -81,7 +81,7 @@ const handleLanguageChange = (e) => {
             className='py-2 px-4 mx-4 my-4 bg-gray-900 text-white rounded-md'
             onChange={handleLanguageChange}
           >
-            {SUPPORTED_LANGUAGES.map(lang => <option key = {lang.identifier} value={lang.identifier}>{lang.name}</option>)}
+            {SUPPORTED_LANGUAGES.map((lang) => <option key = {lang.identifier} value={lang.identifier}>{lang.name}</option>)}
           </select>
         )}
         <button 

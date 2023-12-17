@@ -16,10 +16,10 @@ const GptSearchBar = () => {
     movie
     + "&include_adult=false&language=en-US&page=1", API_OPTIONS);
     const json = await data.json();
-    return json;
+    return json.results;
   }
   const handleGptSearchClick = async () => {
-    console.log(searchText.current.value)
+    // console.log(searchText.current.value)
     //Make a call to GPT API
     //Store 
     const gptQuery = "Act as a Movie recommendation system and suggest some movies for the query: " + searchText.current.value + ". Only give me names  of 5 movies, comma separated like the example result given ahead. Example Result: Gadar, Sholay, Don, Koi mil gya"
@@ -35,7 +35,7 @@ const GptSearchBar = () => {
       // console.log("GPT is not Working");
       // alert("GPT is not working");
     }
-    console.log(gptResults.choices?.[0]?.message?.content);
+    // console.log(gptResults.choices?.[0]?.message?.content);
      // "Hera Pheri, Golmaal: Fun Unlimited, Andaz Apna Apna, Chupke Chupke, 3 Idiots"
     const gptMovieList = gptResults.choices?.[0]?.message?.content.split(",");
    
@@ -43,7 +43,7 @@ const GptSearchBar = () => {
 
     // console.log(gptMovieList);
     //for each movie i will seach TMDB API
-    const promiseArray = gptMovieList.map((movie) => (searchMovieTMDB(movie)));
+    const promiseArray = gptMovieList?.map((movie) => (searchMovieTMDB(movie)));
     //will recieve a promise for each call, as javascript waits for none => promise array
     const tmdbResults = await Promise.all(promiseArray);
     //this will recieve all the promise array and resolve them

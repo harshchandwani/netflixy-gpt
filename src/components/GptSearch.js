@@ -5,15 +5,15 @@ import backgroundImage from "../images/backgroundImage.jpg"
 const GptSearch = () => {
   return (
     <div>
-       <div className='absolute -z-10'>
+       <div className=' -z-10 fixed'>
         <img
           src={backgroundImage}
           alt='Netflix bg'
         />
       </div>
-      <GptSearchBar />
-      <GptMovieSuggestions />
-    </div>
+        <GptSearchBar />
+        <GptMovieSuggestions />
+      </div>
   )
 }
 

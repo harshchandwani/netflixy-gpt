@@ -65,7 +65,7 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in 
           const user = userCredential.user;
-          console.log(user);
+          // console.log(user);
           // ...
         })
         .catch((error) => {
@@ -79,16 +79,26 @@ const Login = () => {
     }
   }
   return (
-    <div className=''>
+    <div>
       <Header />
       <div className='absolute'>
         <img
+          className="h-screen object-cover"
+          style={{backgroundSize: 'cover',
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center',
+          width: '100%',
+          height: '300px', 
+        }}
           src={backgroundImage}
           alt='Netflix bg'
         />
       </div>
 
-      <form onSubmit={(e) => e.preventDefault()} className='rounded w-3/12 text-white absolute p-12 my-36 mx-auto right-0 left-0 bg-black bg-opacity-80'>
+      <form 
+        onSubmit={(e) => e.preventDefault()} 
+        className='rounded w-3/12 text-white absolute p-12 my-36 mx-auto right-0 left-0 bg-black bg-opacity-80'
+      >
         <h1 className='font-bold text-3xl py-4'>{isSignInForm ? "Sign In" : "Sign up"}</h1>
         {!isSignInForm && 
         <input
