@@ -22,7 +22,7 @@ const GptSearchBar = () => {
     // console.log(searchText.current.value)
     //Make a call to GPT API
     //Store 
-    const gptQuery = "Act as a Bollywood Movie recommendation system and suggest some movies for the query: " + searchText.current.value + ". Only give me names  of 5 movies, comma separated like the example result given ahead. Example Result: Gadar, Sholay, Don, Koi mil gya"
+    const gptQuery = "Act as a Movie recommendation system and suggest some movies for the query: " + searchText.current.value + ". Only give me names  of 5 movies, comma separated like the example result given ahead. Example Result: Gadar, Sholay, Don, Koi mil gya"
 
 
     
@@ -38,7 +38,7 @@ const GptSearchBar = () => {
     // console.log(gptResults.choices?.[0]?.message?.content);
      // "Hera Pheri, Golmaal: Fun Unlimited, Andaz Apna Apna, Chupke Chupke, 3 Idiots"
     const gptMovieList = gptResults.choices?.[0]?.message?.content.split(",");
-   
+    gptMovieList.unshift(searchText.current.value);
     //extract gptMovieList to array in order to access it more correctly
 
     // console.log(gptMovieList);
@@ -46,6 +46,7 @@ const GptSearchBar = () => {
     const promiseArray = gptMovieList?.map((movie) => (searchMovieTMDB(movie)));
     //will recieve a promise for each call, as javascript waits for none => promise array
     const tmdbResults = await Promise.all(promiseArray);
+    // tmdbResults.unshift(searchText.current.value)
     //this will recieve all the promise array and resolve them
     // and when all the promise will be resolved it will return the array to tmdb array
     // console.log(tmdbResults);

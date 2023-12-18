@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import logo from "../images/logo.png"
 import { addUser, removeUser } from '../utils/userSlice';
@@ -69,11 +69,14 @@ const handleLanguageChange = (e) => {
 }
   return (
     <div className="absolute w-screen px-8 py-2 bg-gradient-to-b from-black z-10 flex flex-col md:flex-row justify-between">
-      <img
+      <a href='browse'> 
+        <img
         className='w-44 mx-auto md:mx-0'
         src={logo}
         alt='Netflix Logo'
       />
+      </a>
+      
 
       {user && (<div className='flex p-2 justify-between'>
         {showGptSearch && (
