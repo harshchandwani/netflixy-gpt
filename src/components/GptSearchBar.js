@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import openai from '../utils/openai';
 import { API_OPTIONS } from '../utils/constants';
 import { addGptMovieResult } from "../utils/gptSlice"
+import { redirect } from 'react-router-dom';
 const GptSearchBar = () => {
   const language = useSelector((store) => store.config.lang);
   const searchPlaceholder = lang[language].gptSearchPlaceholder;
@@ -34,6 +35,8 @@ const GptSearchBar = () => {
       //TODO: Write Error Handling
       // console.log("GPT is not Working");
       // alert("GPT is not working");
+      return redirect("/Error");
+      
     }
     // console.log(gptResults.choices?.[0]?.message?.content);
      // "Hera Pheri, Golmaal: Fun Unlimited, Andaz Apna Apna, Chupke Chupke, 3 Idiots"

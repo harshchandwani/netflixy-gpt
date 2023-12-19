@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { Link, useNavigate } from 'react-router-dom';
@@ -9,6 +9,11 @@ import { toggleGptSearchView } from '../utils/gptSlice';
 import { SUPPORTED_LANGUAGES } from '../utils/constants';
 import { changeLanguage } from "../utils/configSlice"
 const Header = () => {
+  const [isDropdownOpen, setDropdownOpen] = useState(false);
+  const handleUserIconClick = () => {
+    setDropdownOpen(!isDropdownOpen);
+  };
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
@@ -92,7 +97,31 @@ const handleLanguageChange = (e) => {
           className='py-2 px-4 mx-4 my-4 bg-purple-800 text-white rounded-md'>
             {(showGptSearch? "Home Page": "GPT Search")}
         </button>
-        <img
+        <div className='relative inline-block mt-4'>
+          <img
+            onClick={handleUserIconClick}
+            className='cursor-pointer hidden md:block w-12 h-12'
+            alt='usericon'
+            src={user?.photoURL}
+          />
+          {isDropdownOpen && (
+            <div className='absolute right-0 mt-2 w-48 bg-white border rounded-md shadow-lg'>
+              <div className='py-1'>
+                <p className='block px-4 py-2 text-gray-800'>
+                  You are signed in as {user?.displayName}
+                </p>
+                <button
+                  onClick={handleSignOut}
+                  className='block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-100'
+                >
+                  Sign Out
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
+      
+        {/* <img
           className='hidden md:block w-12 h-12'
           alt='usericon'
           src={user?.photoURL}
@@ -101,7 +130,7 @@ const handleLanguageChange = (e) => {
           onClick={handleSignOut} 
           className='font-bold  text-white'>
           (Sign Out)
-        </button>
+        </button> */}
       </div>)}
     </div>
 
