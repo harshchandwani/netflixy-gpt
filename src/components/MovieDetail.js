@@ -5,7 +5,8 @@ import VideoBackground from './VideoBackground';
 import { useSelector } from 'react-redux';
 import useMovieInfo from '../hooks/useMovieInfo';
 import VideoTitle from "./VideoTitle";
-import Header from "./Header";
+
+import SecondaryContainer from './SecondaryContainer';
 const MovieDetail = () => {
     const { movieId } = useParams();
     useMovieInfo(movieId);
@@ -22,6 +23,7 @@ const MovieDetail = () => {
             <VideoTitle title= {title} overview = {overview}/>
             <VideoBackground movieId={movieId} />
         </div>
+        <SecondaryContainer />
     </div>
 
     

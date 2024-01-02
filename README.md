@@ -36,6 +36,11 @@
 - GPT seach bar
 - (Feature)Multi Language Feature
 - Integrate GET APIs
+- Added New categories of Movies
+- Enhanced Results of GPT
+- Now user can Search a movie name
+- Movie Page is Ready
+- Login is much more smoother
 
 - 
 # How will the Browse Page look like
@@ -61,6 +66,6 @@
 
 # Features to be Added soon
 - Added Lang support to all pages (Done with GPT Search page)
-- Add buttons to move right and left on movie list
+- Add buttons to move right and left on movie list 
 - Add Alert if GPT is not working in Search GPT bar
-- Make hooks for the required logics
+- Make hooks for the required logics 

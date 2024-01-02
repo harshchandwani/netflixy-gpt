@@ -7,6 +7,9 @@ import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
 import backgroundImage from "../images/backgroundImage.jpg"
 import  UserProfileIcon  from '../images/userProfileIcon.jpg';
+import { toast } from 'react-toastify';
+
+
 const Login = () => {
   const [isSignInForm, setSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState();
@@ -38,11 +41,13 @@ const Login = () => {
           updateProfile(user , {
             displayName: name.current.value, photoURL: UserProfileIcon
           }).then(() => {
-            const { uid, email, displayName, photoURL } = auth.current.user; //was user before
+            const { uid, email, displayName, photoURL } = auth?.current?.user; //was user before
+            toast("Welcome to Netflix");
             //if we use user just like previously, in commit 3386f8c, that will not solve the error as the user will be extracted from the above, we need to use the user which is updated already
             dispatch(addUser({uid: uid, email: email, displayName: displayName, photoURL: photoURL}));
             
           }).catch((error) => {
+            toast("Welcome to Netflix")
             setErrorMessage(error.message)
           });
           
@@ -53,7 +58,7 @@ const Login = () => {
           // ..
           setErrorMessage(errorMessage + errorCode)
         });
-
+        
     }
     else {
       //Sign in Logic
@@ -65,6 +70,8 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in 
           const user = userCredential.user;
+          const { displayName } = user;
+          toast("Welcome Back " + displayName);
           // console.log(user);
           // ...
         })

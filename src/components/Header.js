@@ -8,6 +8,7 @@ import { addUser, removeUser } from '../utils/userSlice';
 import { toggleGptSearchView } from '../utils/gptSlice';
 import { SUPPORTED_LANGUAGES } from '../utils/constants';
 import { changeLanguage } from "../utils/configSlice"
+import { toast } from 'react-toastify';
 const Header = () => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const handleUserIconClick = () => {
@@ -21,7 +22,7 @@ const Header = () => {
   const handleSignOut = () => {
 
     signOut(auth).then(() => {
-
+      toast.success('You have been successfully signed out. Come back soon!');
     }).catch((error) => {
       // An error happened
       navigate("/error");
@@ -64,14 +65,22 @@ const Header = () => {
     //unsubsribe when component unmounts
     return () => unsubscribe();
   }, []);
-const handleGptSearchClick = () => {
-  //toggle GPt search button
-  dispatch(toggleGptSearchView())
-} 
-const handleLanguageChange = (e) => {
-  // console.log(e.target.value);
-  dispatch(changeLanguage(e.target.value));
-}
+    const handleGptSearchClick = () => {
+      //toggle GPt search button
+      dispatch(toggleGptSearchView());
+    } 
+    const handleLanguageChange = (e) => {
+      // console.log(e.target.value);
+      dispatch(changeLanguage(e.target.value));
+    }
+    const containerStyles = {
+      backgroundColor: '#4158D0',
+      backgroundImage: 'linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%)',
+      /* Add any other styles you need */
+    };
+
+
+
   return (
     <div className="absolute w-screen px-8 py-2 bg-gradient-to-b from-black z-10 flex flex-col md:flex-row justify-between">
       <a href='browse'> 
@@ -94,7 +103,9 @@ const handleLanguageChange = (e) => {
         )}
         <button 
           onClick={handleGptSearchClick}
-          className='py-2 px-4 mx-4 my-4 bg-purple-800 text-white rounded-md'>
+          className='py-2 px-4 mx-4 my-4 text-white rounded-md'
+          style={containerStyles}  
+        >
             {(showGptSearch? "Home Page": "GPT Search")}
         </button>
         <div className='relative inline-block mt-4'>
