@@ -1,16 +1,17 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import lang from '../utils/languageConstants';
 import { useDispatch, useSelector } from 'react-redux';
 import openai from '../utils/openai';
 import { API_OPTIONS } from '../utils/constants';
 import { addGptMovieResult } from "../utils/gptSlice"
-import { redirect } from 'react-router-dom';
+// import { redirect } from 'react-router-dom';
 const GptSearchBar = () => {
   const language = useSelector((store) => store.config.lang);
   const searchPlaceholder = lang[language].gptSearchPlaceholder;
   const buttonText = lang[language].search;
   const searchText = useRef(null);
   const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false);
   //search movie in TMDB 
   const searchMovieTMDB = async (movie) => {
     const data = await fetch("https://api.themoviedb.org/3/search/movie?query="+
@@ -19,10 +20,12 @@ const GptSearchBar = () => {
     const json = await data.json();
     return json.results;
   }
+  /*
   const handleGptSearchClick = async () => {
     // console.log(searchText.current.value)
     //Make a call to GPT API
     //Store 
+    setLoading(true);
     const gptQuery = "Act as a Movie recommendation system and suggest some movies for the query: " + searchText.current.value + ". Only give me names  of 5 movies, comma separated like the example result given ahead. Example Result: Gadar, Sholay, Don, Koi mil gya"
 
 
@@ -57,6 +60,40 @@ const GptSearchBar = () => {
     dispatch(addGptMovieResult({ movieNames: gptMovieList, movieResults: tmdbResults }));
     
   }
+  */
+
+  const handleGptSearchClick = async () => {
+    setLoading(true);
+
+    const gptQuery = "Act as a Movie recommendation system and suggest some movies for the query: " + searchText.current.value + ". Only give me names of 5 movies, comma separated like the example result given ahead. Example Result: Gadar, Sholay, Don, Koi mil gya";
+
+    try {
+      const gptResults = await openai.chat.completions.create({
+        messages: [{ role: 'user', content: gptQuery }],
+        model: 'gpt-3.5-turbo',
+      });
+
+      if (!gptResults.choices) {
+        // Handle the case when GPT is not working
+        // return redirect("/Error");
+        throw new Error("GPT is not working");
+      }
+
+      const gptMovieList = gptResults.choices?.[0]?.message?.content.split(",");
+      gptMovieList.unshift(searchText.current.value);
+
+      const promiseArray = gptMovieList?.map((movie) => (searchMovieTMDB(movie)));
+      const tmdbResults = await Promise.all(promiseArray);
+
+      dispatch(addGptMovieResult({ movieNames: gptMovieList, movieResults: tmdbResults }));
+    } catch (error) {
+      console.error(error);
+      // Handle errors here
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className='pt-[35%] md:pt-[10%] flex justify-center'>
       <form className=' w-full md:w-1/2 bg-black grid grid-cols-12' onSubmit={(e) => e.preventDefault()}>
@@ -70,7 +107,7 @@ const GptSearchBar = () => {
             className='col-span-3 m-4 py-2 px-4 bg-red-700 text-white rounded-lg'
             onClick={handleGptSearchClick}
             >
-            {buttonText}
+              {loading ? 'Searching...' : buttonText}
         </button>
       </form>
     </div>
