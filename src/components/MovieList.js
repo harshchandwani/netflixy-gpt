@@ -3,7 +3,8 @@ import MovieCard from './MovieCard';
 import { Link } from 'react-router-dom';
 
 const MovieList = ({title, movies}) => {
-    // console.log(movies);
+    // console.log(movies[0]);
+
     if(!movies){
       return null;
     }
@@ -14,8 +15,15 @@ const MovieList = ({title, movies}) => {
         
         <div className='flex'>
             {movies?.map((movie) => (
+
               <Link key={movie?.id} to={"/movie/" + movie?.id}>
-                <MovieCard key={movie.id} posterPath={movie.poster_path} />
+                <MovieCard
+                    title={movie?.title}
+                    movieId={movie?.id}
+                    date={movie?.release_date}
+                    rating={movie?.vote_average?.toFixed(1)}
+                    poster_path={movie?.poster_path}
+                  />
               </Link>
             ))}
          </div>

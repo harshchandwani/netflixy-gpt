@@ -1,12 +1,12 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import MovieList from './MovieList';
+import { Shimmer } from 'react-shimmer';
 const GptMovieSuggestions = () => {
   const data = useSelector((store) => store.gpt);
   const {movieResults, movieNames} = data;
   if(!movieNames){
-    return null;
-    //add Shimmer
+    <Shimmer width={800} height={600} />
   }
 
 

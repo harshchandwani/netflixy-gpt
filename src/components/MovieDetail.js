@@ -1,3 +1,4 @@
+
 import React from 'react'
 import { useParams } from 'react-router-dom'
 // import useMovieTrailer from '../hooks/useMovieTrailer';
@@ -7,6 +8,8 @@ import useMovieInfo from '../hooks/useMovieInfo';
 import VideoTitle from "./VideoTitle";
 
 import SecondaryContainer from './SecondaryContainer';
+import Header from './Header';
+import Footer from './Footer';
 const MovieDetail = () => {
     const { movieId } = useParams();
     useMovieInfo(movieId);
@@ -15,7 +18,7 @@ const MovieDetail = () => {
       return;
     }
     const { title, overview} = movie;
-    console.log(movie)
+    // console.log(movie)
   return (
     <div>
         {/* <Header /> */}
@@ -24,6 +27,7 @@ const MovieDetail = () => {
             <VideoBackground movieId={movieId} />
         </div>
         <SecondaryContainer />
+      <Footer />
     </div>
 
     

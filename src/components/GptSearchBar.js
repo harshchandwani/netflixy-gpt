@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import openai from '../utils/openai';
 import { API_OPTIONS } from '../utils/constants';
 import { addGptMovieResult } from "../utils/gptSlice"
+import { Shimmer } from 'react-shimmer';
 // import { redirect } from 'react-router-dom';
 const GptSearchBar = () => {
   const language = useSelector((store) => store.config.lang);
@@ -64,7 +65,7 @@ const GptSearchBar = () => {
 
   const handleGptSearchClick = async () => {
     setLoading(true);
-
+    
     const gptQuery = "Act as a Movie recommendation system and suggest some movies for the query: " + searchText.current.value + ". Only give me names of 5 movies, comma separated like the example result given ahead. Example Result: Gadar, Sholay, Don, Koi mil gya";
 
     try {
