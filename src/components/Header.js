@@ -65,48 +65,48 @@ const Header = () => {
     //unsubsribe when component unmounts
     return () => unsubscribe();
   }, []);
-    const handleGptSearchClick = () => {
-      //toggle GPt search button
-      dispatch(toggleGptSearchView());
-    } 
-    const handleLanguageChange = (e) => {
-      // console.log(e.target.value);
-      dispatch(changeLanguage(e.target.value));
-    }
-    const containerStyles = {
-      backgroundColor: '#4158D0',
-      backgroundImage: 'linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%)',
-      /* Add any other styles you need */
-    };
+  const handleGptSearchClick = () => {
+    //toggle GPt search button
+    dispatch(toggleGptSearchView());
+  }
+  const handleLanguageChange = (e) => {
+    // console.log(e.target.value);
+    dispatch(changeLanguage(e.target.value));
+  }
+  const containerStyles = {
+    backgroundColor: '#4158D0',
+    backgroundImage: 'linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%)',
+    /* Add any other styles you need */
+  };
 
 
 
   return (
     <div className="absolute w-screen px-8 py-2 bg-gradient-to-b from-black z-10 flex flex-col md:flex-row justify-between">
-      <a href='browse'> 
+      <a href='browse'>
         <img
-        className='w-44 mx-auto md:mx-0'
-        src={logo}
-        alt='Netflix Logo'
-      />
+          className='w-44 mx-auto md:mx-0'
+          src={logo}
+          alt='Netflix Logo'
+        />
       </a>
-      
+
 
       {user && (<div className='flex p-2 justify-between'>
         {showGptSearch && (
-          <select 
+          <select
             className='py-2 px-4 mx-4 my-4 bg-gray-900 text-white rounded-md'
             onChange={handleLanguageChange}
           >
-            {SUPPORTED_LANGUAGES.map((lang) => <option key = {lang.identifier} value={lang.identifier}>{lang.name}</option>)}
+            {SUPPORTED_LANGUAGES.map((lang) => <option key={lang.identifier} value={lang.identifier}>{lang.name}</option>)}
           </select>
         )}
-        <button 
+        <button
           onClick={handleGptSearchClick}
           className='py-2 px-4 mx-4 my-4 text-white rounded-md'
-          style={containerStyles}  
+          style={containerStyles}
         >
-            {(showGptSearch? "Home Page": "GPT Search")}
+          {(showGptSearch ? "Home Page" : "GPT Search")}
         </button>
         <div className='relative inline-block mt-4'>
           <img
@@ -121,6 +121,14 @@ const Header = () => {
                 <p className='block px-4 py-2 text-gray-800'>
                   You are signed in as {user?.displayName}
                 </p>
+                <Link to={"/watchlater"} >
+                  <button
+                    className='block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-100'
+                  >
+                    WatchLater
+                  </button>
+                </Link>
+
                 <button
                   onClick={handleSignOut}
                   className='block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-100'
@@ -131,7 +139,7 @@ const Header = () => {
             </div>
           )}
         </div>
-      
+
         {/* <img
           className='hidden md:block w-12 h-12'
           alt='usericon'

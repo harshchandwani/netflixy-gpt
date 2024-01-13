@@ -5,6 +5,7 @@ import { RouterProvider } from 'react-router-dom';
 import { createBrowserRouter } from 'react-router-dom';
 import MovieDetail from './MovieDetail';
 import Error from './Error';
+import Watchlist from './WatchList';
 const Body = () => {
   
   const appRouter = createBrowserRouter([
@@ -19,6 +20,10 @@ const Body = () => {
     {
       path: "/movie/:movieId",
       element: <MovieDetail />
+    },
+    {
+      path: "watchlater",
+      element: <Watchlist/>
     },
     {
       path: "*",

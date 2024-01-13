@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { API_OPTIONS } from "../utils/constants";
-import { addMovieDetail } from "../utils/moviesSlice";
+import { addMovieDetails } from "../utils/moviePageSlice";
 // import { addTrailerVideo } from "../utils/moviesSlice";
 
 const useMovieInfo = (movieId) => {
@@ -19,7 +19,7 @@ const useMovieInfo = (movieId) => {
     // const filterData = await json?.results?.filter((video) => video.type === "Trailer");
     // const trailer = await filterData?.length ? filterData?.[0] : json?.results?.[0];
     
-    dispatch(addMovieDetail(json));
+    dispatch(addMovieDetails(json));
   };
   useEffect(() => {
     getMovieDetail();
