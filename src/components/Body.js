@@ -6,12 +6,18 @@ import { createBrowserRouter } from 'react-router-dom';
 import MovieDetail from './MovieDetail';
 import Error from './Error';
 import Watchlist from './WatchList';
+import Favourites from './Favourites';
+import GptSearch from './GptSearch';
 const Body = () => {
   
   const appRouter = createBrowserRouter([
     {
       path: "/",
       element: <Login />,
+    },
+    {
+      path: "/gptSearch",
+      element: <GptSearch />
     },
     {
       path: "/browse",
@@ -24,6 +30,10 @@ const Body = () => {
     {
       path: "watchlater",
       element: <Watchlist/>
+    },
+    {
+      path: "favourites",
+      element : <Favourites />
     },
     {
       path: "*",

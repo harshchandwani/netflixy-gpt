@@ -7,6 +7,7 @@ import { addPath } from "../utils/pathSlice";
 import { addMovieClicked } from "../utils/moviePageSlice";
 import TopContainer from "./TopContainer";
 import Shimmer from "./Shimmer";
+import Header from "./Header";
 const MovieDetail = () => {
   const movieId = useParams();
   const dispatch = useDispatch();
@@ -33,6 +34,7 @@ const MovieDetail = () => {
     <Shimmer />
   ) : (
     <div className="">
+      <Header />
       <TopContainer />
     </div>
   );
