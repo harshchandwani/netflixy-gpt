@@ -5,6 +5,7 @@ const moviePageSlice = createSlice({
   initialState: {
     movieDetails: null,
     movieClicked: null,
+    
   },
   reducers: {
     addMovieDetails: (state, action) => {

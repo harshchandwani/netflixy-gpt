@@ -18,19 +18,20 @@ import {
   removeFavouriteMovie,
   removeWatchlist,
 } from "../utils/moviesSlice"
+import useMovieVideo from "../hooks/useMovieVideo";
 const TopContainer = () => {
     const [toggle, setToggle] = useState(false);
     const movieId = useParams();
+    useMovieVideo(movieId.movieId);
     const details = useSelector((store) => store?.moviePageDetails);
     const dispatch = useDispatch();
-
     const date = details.movieDetails?.release_date;
     const hours = Math.floor(details.movieDetails?.runtime / 60);
     const minutes = Math.floor(details.movieDetails?.runtime % 60);
 
-    const movieTrailer = useSelector((store) => store.movies?.movieTrailer);
-    const keys = movieTrailer?.key;
-
+    const movieTrail = useSelector((store) => store.movies?.movieTrailer);
+    // console.log(movieTrail);
+    const keys = movieTrail?.key;
     const handlePlay = () => {
         setToggle(!toggle);
       };

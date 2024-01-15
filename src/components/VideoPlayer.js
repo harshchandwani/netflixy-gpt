@@ -1,10 +1,7 @@
 import React from "react";
 import ReactPlayer from "react-player";
-import { useSelector } from "react-redux";
 
 const VideoPalyer = ({ keys }) => {
-  //   const movieTrailer = useSelector((store) => store.movies?.movieTrailer);
-  //   const keys = movieTrailer?.key;
   return (
     <div>
       <ReactPlayer

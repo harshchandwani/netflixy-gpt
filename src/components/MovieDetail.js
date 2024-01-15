@@ -14,7 +14,7 @@ const MovieDetail = () => {
   useMovieInfo(movieId.movieId);
   const details = useSelector((store) => store?.moviePageDetails);
   useMovieTrailer(details?.movieDetails?.id);
-  console.log(details);
+  // console.log(details);
 
   const clickedMovieId = useSelector(
     (store) => store.moviePageDetails?.movieClicked
