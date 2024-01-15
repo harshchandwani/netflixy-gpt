@@ -8,6 +8,7 @@ import { addMovieClicked } from "../utils/moviePageSlice";
 import TopContainer from "./TopContainer";
 import Shimmer from "./Shimmer";
 import Header from "./Header";
+import BottomContainer from "./BottomContainer";
 const MovieDetail = () => {
   const movieId = useParams();
   const dispatch = useDispatch();
@@ -36,6 +37,10 @@ const MovieDetail = () => {
     <div className="">
       <Header />
       <TopContainer />
+      <div className="bg-black">
+        <BottomContainer />
+      </div>
+      
     </div>
   );
 }

@@ -6,8 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import logo from '../images/logo.png';
 import { addUser, removeUser } from '../utils/userSlice';
 import { toggleGptSearchView } from '../utils/gptSlice';
-import { SUPPORTED_LANGUAGES } from '../utils/constants';
-import { changeLanguage } from '../utils/configSlice';
+// import { changeLanguage } from '../utils/configSlice';
 import { toast } from 'react-toastify';
 
 const Header = () => {
@@ -19,7 +18,6 @@ const Header = () => {
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
   const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
-
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -58,9 +56,9 @@ const Header = () => {
     dispatch(toggleGptSearchView());
   };
 
-  const handleLanguageChange = (e) => {
-    dispatch(changeLanguage(e.target.value));
-  };
+  // const handleLanguageChange = (e) => {
+  //   dispatch(changeLanguage(e.target.value));
+  // };
 
   const containerStyles = {
     backgroundColor: '#4158D0',
@@ -73,13 +71,18 @@ const Header = () => {
         <Link to="/">
           <img className="w-24 sm:w-44 mx-auto sm:mx-0" src={logo} alt="Netflix Logo" />
         </Link>
-        {user && <button
-          onClick={handleGptSearchClick}
-          className="py-2 px-4 sm:mx-4 text-white rounded-md"
-          style={containerStyles}
-        >
-          {showGptSearch ? 'Home Page' : 'GPT Search'}
-        </button>}
+        {user && 
+          <Link to="/browse">
+            <button
+              onClick={handleGptSearchClick}
+              className="py-2 px-4 sm:mx-4 text-white rounded-md"
+              style={containerStyles}
+            >
+              {showGptSearch ? 'Home Page' : 'GPT Search'}
+            </button>
+          </Link>
+        }
+        
       </div>
 
       {user && (

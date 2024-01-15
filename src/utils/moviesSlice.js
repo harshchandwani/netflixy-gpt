@@ -18,6 +18,7 @@ const moviesSlice = createSlice({
         movieTrailer: null,
         favourites: [], 
         watchList: [],
+        recommended: [],
     },
     reducers: {
         addNowPlayingMovies: (state, action) => {
@@ -43,6 +44,9 @@ const moviesSlice = createSlice({
         },
         addTrendingMovies: (state, action) => {
             state.trendingMovies = action.payload;
+        },
+        addRecommendation: (state, action) => {
+            state.recommended = action.payload;
         },
         addFavouriteMovie: (state, action) => {
             let find = state?.favourites?.findIndex(
@@ -87,12 +91,12 @@ export const {
     addMovieTrailer,
     addPopularMovies, 
     addTopRatedMovies, 
-    addOnTheAir, 
+    addOnTheAir,
+    addRecommendation,
     addTrendingMovies,
     addFavouriteMovie,
     removeFavouriteMovie,
     addWatchlist,
     removeWatchlist,
-    
 } = moviesSlice.actions;
 export default moviesSlice.reducer;
