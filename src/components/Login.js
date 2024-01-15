@@ -123,7 +123,7 @@ const Login = () => {
         />
         <p className='text-red-600 font-bold text-lg py-2'>{errorMessage}</p>
         <button className='p-4 my-6 w-full bg-red-700 rounded hover:bg-red-800' onClick={handleButtonClick}>{isSignInForm ? "Sign In" : "Sign up"}</button>
-        <p>{isSignInForm ? "New to Netflix?" : "Already a User?"} <a href='/#' onClick={toggleSignInForm}>{isSignInForm ? "Sign up" : "Sign in"}</a></p>
+        <p>{isSignInForm ? "New to Netflix?" : "Already a User?"} <a className='text-red-600 font-bold' href='/#' onClick={toggleSignInForm}>{isSignInForm ? "Sign up" : "Sign in"}</a></p>
       </form>
     </div>
   )

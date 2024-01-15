@@ -40,7 +40,7 @@ const Footer = () => {
           <div className="w-full sm:w-1/2 md:w-1/4 lg:w-1/6 mb-4">
             <h3 className="text-lg font-bold mb-2">Contact</h3>
             <ul>
-              <li>Email: info@example.com</li>
+              <li>Email: chandwaniharsh03@gmail.com</li>
               <li>Phone: +123456789</li>
             </ul>
           </div>
@@ -48,7 +48,7 @@ const Footer = () => {
 
         {/* Copyright */}
         <div className="mt-8 text-center">
-          <p>&copy; 2024 Netflix Clone. All rights reserved.</p>
+          <p>&copy; 2024 Netflix Clone. By Harsh Chandwani</p>
         </div>
       </div>
     </footer>
