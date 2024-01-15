@@ -20,12 +20,12 @@ const Watchlist = () => {
   return (
     <div>
       <Header />
-      <div className="w-full min-h-screen pt-16 px-5 md:pt-[120px] md:pb-5 md:px-10 text-black bg-[#caf0f8]">
-        <h2 className="text-3xl font-bold text-[#353535]">Watchlist</h2>
+      <div className="w-full min-h-screen pt-16 px-5 md:pt-[120px] md:pb-5 md:px-10 text-white bg-black">
+        <h2 className="text-3xl font-bold ">Watchlist</h2>
         {watchlist.length === 0 && (
           <div className="w-[200px] md:w-[300px] pt-32 md:pt-44 md:py-20 relative top-60 md:top-48 left-1/2 translate-x-[-50%] translate-y-[-50%]">
             {/* <img src={WatchlistIcon} alt="watchlist-icon" /> */}
-            <p className="text-center text-2xl font-bold text-[#023047]">
+            <p className="text-center text-2xl font-bold text-[#F70E17]">
               Watchlist Empty
             </p>
           </div>
@@ -37,7 +37,7 @@ const Watchlist = () => {
                 onClick={() => {
                   dispatch(removeWatchlist(movie.id));
                 }}
-                className="relative top-[20px] text-gray-500 transition hover:-translate-y-1 hover:text-red-600 z-10"
+                className="relative top-[20px] left-[170px] text-gray-500 transition hover:-translate-y-1 hover:text-red-600 z-10"
               >
                 <CancelTwoToneIcon />
               </button>
