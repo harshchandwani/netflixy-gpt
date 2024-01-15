@@ -30,14 +30,14 @@ const Watchlist = () => {
             </p>
           </div>
         )}
-        <div className="grid grid-cols-2 md:grid-cols-6 pl-4 mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-6 pl-2 mx-auto">
           {watchlist?.map((movie) => (
-            <div>
+            <div key={movie.id} className="relative">
               <button
                 onClick={() => {
                   dispatch(removeWatchlist(movie.id));
                 }}
-                className="relative top-[20px] left-[170px] text-gray-500 transition hover:-translate-y-1 hover:text-red-600 z-10"
+                className="absolute top-0 text-gray-500 transition hover:-translate-y-1 hover:text-red-600 z-10"
               >
                 <CancelTwoToneIcon />
               </button>
@@ -55,8 +55,8 @@ const Watchlist = () => {
             </div>
           ))}
         </div>
+      </div>
     </div>
-  </div>
   );
 };
 

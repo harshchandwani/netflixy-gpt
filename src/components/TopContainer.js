@@ -64,10 +64,10 @@ const TopContainer = () => {
                 />
               </div>
               <div className="w-full min-h-[500px] bg-[#0a0908] pt-5 md:bg-transparent relative top-20 md:top-0 flex flex-col items-center md:items-start text-center md:text-left md:w-8/12 md:pt-[140px] text-white">
-                <h1 className="px-4 md:px-0 text-3xl font-semibold ">
+                <h1 className="px-4 md:px-0 text-5xl font-semibold my-2 ">
                   {details.movieDetails?.original_title}
                 </h1>
-                <p className="font-light text-sm">
+                <p className="font-light text-lg">
                   {details.movieDetails?.tagline}
                 </p>
                 <div className=" flex py-2">
@@ -75,7 +75,7 @@ const TopContainer = () => {
     
                   <h3 className="mx-2">{hours + "h " + minutes + "m"}</h3>
                 </div>
-                <h3 className="flex ">
+                <h3 className="flex">
                   {details.movieDetails?.genres.map((genre) => (
                     <Genre key={genre?.name} genre={genre?.name} />
                   ))}
@@ -111,7 +111,7 @@ const TopContainer = () => {
                   </button>
                 </div>
                 <div className="px-4 py-2 pb-5 md:px-0">
-                  <h3 className="text-xl font-medium ">Overview</h3>
+                  <h3 className="text-2xl font-medium my-2">Overview</h3>
                   <p className="md:w-3/4">{details.movieDetails?.overview}</p>
                 </div>
               </div>

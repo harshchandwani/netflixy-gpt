@@ -33,12 +33,12 @@ const Favourites = () => {
           )}
           <div className="grid grid-cols-2 md:grid-cols-6 pl-2 mx-auto">
             {favourites?.map((movie) => (
-              <div>
+              <div key={movie.id}>
                 <button
                   onClick={() => {
                     dispatch(removeFavouriteMovie(movie.id));
                   }}
-                  className="relative top-[20px] left-[170px] text-gray-500 transition hover:-translate-y-1 hover:text-red-600 z-10"
+                  className="relative top-0 left-0 text-gray-500 transition hover:-translate-y-1 hover:text-red-600 z-10"
                 >
                   <CancelTwoToneIcon />
                 </button>
