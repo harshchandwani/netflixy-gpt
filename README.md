@@ -10,12 +10,12 @@ Github Link:    https://github.com/harshchandwani/netflixy-gpt
 
 
 # Tech Used
-Frontend : ReactJs
-Login/Signup: Firebase
-API: TMDB for movies, OpenAI for search and suggestion
-CSS: Tailwind CSS, Material UI
-Storage: Redux for Local, Firebase for Cloud
-Other Dependencies: React Toastify, React Circular ProgressBar, React Shimmer Effects, React Player, DayJs
+Frontend : ReactJs <br>
+Login/Signup: Firebase <br>
+API: TMDB for movies, OpenAI for search and suggestion <br>
+CSS: Tailwind CSS, Material UI <br>
+Storage: Redux for Local, Firebase for Cloud <br>
+Other Dependencies: React Toastify, React Circular ProgressBar, React Shimmer Effects, React Player, DayJs <br>
 
 # How will the Browse Page look like
 
