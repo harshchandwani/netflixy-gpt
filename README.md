@@ -9,6 +9,14 @@ Password: Test@123
 Github Link:    https://github.com/harshchandwani/netflixy-gpt
 
 
+# Tech Used
+Frontend : ReactJs
+Login/Signup: Firebase
+API: TMDB for movies, OpenAI for search and suggestion
+CSS: Tailwind CSS, Material UI
+Storage: Redux for Local, Firebase for Cloud
+Other Dependencies: React Toastify, React Circular ProgressBar, React Shimmer Effects, React Player, DayJs
+
 # How will the Browse Page look like
 
 ![photo_2023-11-27_22-44-43](https://github.com/harshchandwani/netflixy-gpt/assets/67815775/65f53bb1-3de6-4da6-a11a-e2fec24b8444)
