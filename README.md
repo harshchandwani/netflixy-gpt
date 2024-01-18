@@ -1,51 +1,30 @@
 # Netflix GPT
 
+Deployment Link:  https://nitflix-ad124.web.app/         
+You can create a new account OR <br>
+Username: Test1212@gmail.com
+Password: Test@123
+<br>
 
-- Create React App
-- Configured TailwindCSS
-- Header
-- Routing of App
-- Login Form
-- Sign up Form
-- Form Validation
-- useRef Hook
-- Firebase Setup
-- Deploying our app to production
-- Create SignUp User Account
-- Implement Sign In user Api
-- Created Redux Store with userSlice
-- Implemented Sign out
-- Update Profile
-- BugFix: Sign up user displayName and profile picture update
-- BugFix: if the user is not logged in Redirect/ browse to Login page and vice-versa
-- Unsubscribed to the onAuthStateChanged callback
-- Add hardcoded alues to the constants file
-- Register TMBD API and create an application and get access token
-- Get Data from TMDB now playing movies list API
-- Fetch from TMDB Movies
-- Update Store with Trailer and Video Data
-- Embedded the Youtube Video and make it autoplay and mute
-- Tailwind Classes to make the main container look awesome
-- Build secondary component
-- Build movie list
-- Build Movie card
-- TMDB Image CDN URL
-- Made the Browser page using Tailwind CSS
-- use 4 custom hook
-- GPT Search Page
-- GPT seach bar
-- (Feature)Multi Language Feature
-- Integrate GET APIs
-- Added New categories of Movies
-- Enhanced Results of GPT
-- Now user can Search a movie name
-- Movie Page is Ready
-- Login is much more smoother
+Github Link:    https://github.com/harshchandwani/netflixy-gpt
 
-- 
+
+# Tech Used
+Frontend : ReactJs <br>
+Login/Signup: Firebase <br>
+API: TMDB for movies, OpenAI for search and suggestion <br>
+CSS: Tailwind CSS, Material UI <br>
+Storage: Redux for Local, Firebase for Cloud <br>
+Other Dependencies: React Toastify, React Circular ProgressBar, React Shimmer Effects, React Player, DayJs <br>
+
 # How will the Browse Page look like
+
 ![photo_2023-11-27_22-44-43](https://github.com/harshchandwani/netflixy-gpt/assets/67815775/65f53bb1-3de6-4da6-a11a-e2fec24b8444)
 
+# Some ScreenShots
+![Screenshot 2024-01-15 222310](https://github.com/harshchandwani/netflixy-gpt/assets/67815775/d083840a-5456-41ba-800a-ea7467c08247)
+<br>
+![Screenshot 2024-01-15 222332](https://github.com/harshchandwani/netflixy-gpt/assets/67815775/71f85d7b-03b1-4ed0-b841-c24d9858f215)
 
 # Features
 
