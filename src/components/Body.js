@@ -1,15 +1,15 @@
 import React from 'react'
-import Login from './Login'
-import Browse from './Browse'
+import Login from '../pages/Login'
+import Browse from '../pages/Browse'
 import { RouterProvider } from 'react-router-dom';
 import { createBrowserRouter } from 'react-router-dom';
-import MovieDetail from './MovieDetail';
-import Error from './Error';
-import Watchlist from './WatchList';
-import Favourites from './Favourites';
-import GptSearch from './GptSearch';
+import MovieDetail from '../pages/MovieDetail';
+import Error from '../pages/Error';
+import Watchlist from '../pages/WatchList';
+import Favourites from '../pages/Favourites';
+import GptSearch from '../pages/GptSearch';
 const Body = () => {
-  
+
   const appRouter = createBrowserRouter([
     {
       path: "/",
@@ -29,11 +29,11 @@ const Body = () => {
     },
     {
       path: "watchlater",
-      element: <Watchlist/>
+      element: <Watchlist />
     },
     {
       path: "favourites",
-      element : <Favourites />
+      element: <Favourites />
     },
     {
       path: "*",

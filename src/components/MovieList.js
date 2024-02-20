@@ -28,6 +28,7 @@ const MovieList = ({ title, movies }) => {
                   hidden: { opacity: 0, x: -20 },
                   visible
                 }}
+                key={movie?.id}
               >
                 <Link key={movie?.id} to={"/movie/" + movie?.id}>
                   <MovieCard

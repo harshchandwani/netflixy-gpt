@@ -4,11 +4,11 @@ import useOnTheAir from '../hooks/useOnTheAir';
 import usePopularMovies from '../hooks/usePopularMovies';
 import useTopRatedMovies from '../hooks/useTopRatedMovies';
 import GptSearch from './GptSearch';
-import Header from './Header'
-import MainContainer from './MainContainer';
-import SecondaryContainer from './SecondaryContainer';
+import Header from '../components/Header'
+import MainContainer from '../components/MainContainer';
+import SecondaryContainer from '../components/SecondaryContainer';
 import useTrendingMovies from '../hooks/useTrendingMovies';
-import Footer from './Footer';
+import Footer from '../components/Footer';
 const Browse = () => {
   const showGptSearch = useSelector(store => store.gpt.showGptSearch);
 

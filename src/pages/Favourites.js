@@ -1,17 +1,18 @@
 import React, { useEffect } from "react";
-import MovieCard from "./MovieCard";
+import MovieCard from "../components/MovieCard";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { addPath } from "../utils/pathSlice";
-import { removeWatchlist } from "../utils/moviesSlice"
+import { removeFavouriteMovie } from "../utils/moviesSlice";
 import CancelTwoToneIcon from "@mui/icons-material/CancelTwoTone";
-import Header from "./Header";
-// import WatchlistIcon from "../assets/wishlist.png";
+import Header from "../components/Header";
+// import FavouriteIcon from "../assets/favourites.png";
 
-const Watchlist = () => {
-  const watchlist = useSelector((store) => store.movies.watchList);
-  const pathname = window.location.pathname;
+const Favourites = () => {
+  const favourites = useSelector((store) => store.movies.favourites);
   const dispatch = useDispatch();
+
+  const pathname = window.location.pathname;
 
   useEffect(() => {
     dispatch(addPath(pathname));
@@ -21,23 +22,23 @@ const Watchlist = () => {
     <div>
       <Header />
       <div className="w-full min-h-screen pt-16 px-5 md:pt-[120px] md:pb-5 md:px-10 text-white bg-black">
-        <h2 className="text-3xl font-bold ">Watchlist</h2>
-        {watchlist.length === 0 && (
+        <h2 className="text-3xl font-bold">Favourites</h2>
+        {favourites.length === 0 && (
           <div className="w-[200px] md:w-[300px] pt-32 md:pt-44 md:py-20 relative top-60 md:top-48 left-1/2 translate-x-[-50%] translate-y-[-50%]">
-            {/* <img src={WatchlistIcon} alt="watchlist-icon" /> */}
+            {/* <img src={FavouriteIcon} alt="favourite-icon" /> */}
             <p className="text-center text-2xl font-bold text-[#F70E17]">
-              Watchlist Empty
+              No Favourite Movie
             </p>
           </div>
         )}
         <div className="grid grid-cols-2 md:grid-cols-6 pl-2 mx-auto">
-          {watchlist?.map((movie) => (
-            <div key={movie.id} className="relative">
+          {favourites?.map((movie) => (
+            <div key={movie.id}>
               <button
                 onClick={() => {
-                  dispatch(removeWatchlist(movie.id));
+                  dispatch(removeFavouriteMovie(movie.id));
                 }}
-                className="absolute top-0 text-gray-500 transition hover:-translate-y-1 hover:text-red-600 z-10"
+                className="relative top-0 left-0 text-gray-500 transition hover:-translate-y-1 hover:text-red-600 z-10"
               >
                 <CancelTwoToneIcon />
               </button>
@@ -57,7 +58,8 @@ const Watchlist = () => {
         </div>
       </div>
     </div>
+
   );
 };
 
-export default Watchlist;
+export default Favourites;

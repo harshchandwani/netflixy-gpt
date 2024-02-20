@@ -5,10 +5,10 @@ import useMovieInfo from "../hooks/useMovieInfo";
 import useMovieTrailer from "../hooks/useMovieTrailer";
 import { addPath } from "../utils/pathSlice";
 import { addMovieClicked } from "../utils/moviePageSlice";
-import TopContainer from "./TopContainer";
-import Shimmer from "./Shimmer";
-import Header from "./Header";
-import BottomContainer from "./BottomContainer";
+import TopContainer from "../components/TopContainer";
+import Shimmer from "../components/Shimmer";
+import Header from "../components/Header";
+import BottomContainer from "../components/BottomContainer";
 const MovieDetail = () => {
   const movieId = useParams();
   const dispatch = useDispatch();
