@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { auth } from '../utils/firebase';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import logo from '../images/logo.png';
 import { addUser, removeUser } from '../utils/userSlice';
@@ -18,6 +18,7 @@ const Header = () => {
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
   const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -68,59 +69,62 @@ const Header = () => {
   return (
     <div className="absolute w-screen px-4 sm:px-8 py-2 bg-gradient-to-b from-black z-10 flex justify-between items-center">
       <div className="flex items-center">
-        <Link to="/">
+        <Link to="/browse">
           <img className="w-24 sm:w-44 mx-auto sm:mx-0" src={logo} alt="Netflix Logo" />
         </Link>
-        {user && 
-          <Link to="/browse">
+        {user &&
+          <Link to="/gptSearch">
             <button
               onClick={handleGptSearchClick}
               className="py-2 px-4 sm:mx-4 text-white rounded-md"
               style={containerStyles}
             >
-              {showGptSearch ? 'Home Page' : 'GPT Search'}
+              GPT Search
             </button>
           </Link>
         }
-        
+
+
       </div>
 
-      {user && (
-        <div className="relative inline-block">
-          <img
-            onClick={handleUserIconClick}
-            className="cursor-pointer w-10 h-10 sm:w-12 sm:h-12"
-            alt="usericon"
-            src={user?.photoURL}
-          />
-          {isDropdownOpen && (
-            <div className="absolute right-0 mt-2 w-48 bg-white border rounded-md shadow-lg">
-              <div className="py-1">
-                <p className="block px-4 py-2 text-gray-800">
-                  You are signed in as {user?.displayName}
-                </p>
-                <Link to="/watchlater">
-                  <button className="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-100">
-                    Watch Later
+      {
+        user && (
+          <div className="relative inline-block">
+            <img
+              onClick={handleUserIconClick}
+              className="cursor-pointer w-10 h-10 sm:w-12 sm:h-12"
+              alt="usericon"
+              src={user?.photoURL}
+            />
+            {isDropdownOpen && (
+              <div className="absolute right-0 mt-2 w-48 bg-white border rounded-md shadow-lg">
+                <div className="py-1">
+                  <p className="block px-4 py-2 text-gray-800">
+                    You are signed in as {user?.displayName}
+                  </p>
+                  <Link to="/watchlater">
+                    <button className="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-100">
+                      Watch Later
+                    </button>
+                  </Link>
+                  <Link to="/favourites">
+                    <button className="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-100">
+                      Favourites
+                    </button>
+                  </Link>
+                  <button
+                    onClick={handleSignOut}
+                    className="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-100"
+                  >
+                    Sign Out
                   </button>
-                </Link>
-                <Link to="/favourites">
-                  <button className="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-100">
-                    Favourites
-                  </button>
-                </Link>
-                <button
-                  onClick={handleSignOut}
-                  className="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-100"
-                >
-                  Sign Out
-                </button>
+                </div>
               </div>
-            </div>
-          )}
-        </div>
-      )}
-    </div>
+            )}
+          </div>
+        )
+      }
+    </div >
   );
 };
 

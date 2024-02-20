@@ -13,7 +13,7 @@ const Browse = () => {
   const showGptSearch = useSelector(store => store.gpt.showGptSearch);
 
   useNowPlayingMovies();
-  useTrendingMovies();  
+  useTrendingMovies();
   usePopularMovies();
   useTopRatedMovies();
   useOnTheAir();
@@ -21,17 +21,15 @@ const Browse = () => {
     <div>
       <Header />
       {
-        showGptSearch ? (
-        <GptSearch />
-        ) : (
-          <>
-            <MainContainer/>
-            <SecondaryContainer />
-          </>
-        )
+
+        <>
+          <MainContainer />
+          <SecondaryContainer />
+        </>
+
       }
       <Footer />
-          
+
       {/* 
         Main Container
           - Video Background
