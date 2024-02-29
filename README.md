@@ -1,6 +1,6 @@
 # Netflix GPT
 
-Deployment Link:  https://nitflix-ad124.web.app/         
+Deployment Link:  [https://nitflix-ad124.web.app/  ](https://netflixy-6p90myeb0-harshchandwani.vercel.app/)       
 You can create a new account OR <br>
 Username: Test1212@gmail.com
 Password: Test@123
